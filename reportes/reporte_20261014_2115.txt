@@ -1,0 +1,5 @@
+INFORME DE AUDITORÍA DE SEGURIDAD
+==================================================
+Fecha: 14/10/2026
+Puntuación: 40/100
+Hallazgos: 2 sin MFA, 2 reglas críticas

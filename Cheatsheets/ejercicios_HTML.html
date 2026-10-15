@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <style>
+        body { background-color: lightblue;}
+        h1 {color: red;}
+       </style> 
+    </head>
+    <body>
+        <h1>ALMIRANTE RADDUS</h1>
+        <p>Soy el capitan de la alianza rebelde</p>
+        <p>Líder de escuadrón de la alianza rebelde</p>
+        <p id="mensaje">Texto original</p>
+        <button onclick="cambiar()">Cambiar</button>
+        <script>
+        function cambiar() {
+            document.getElementById('mensaje').textContent = '¡Cambió!';
+        }
+        </script> 
+    </body>
+</html>
