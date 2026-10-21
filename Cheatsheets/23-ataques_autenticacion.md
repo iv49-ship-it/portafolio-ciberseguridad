@@ -115,6 +115,7 @@ Cambiar KRBTGT	Cambiar contraseña KRBTGT periódicamente (2 veces)
 Monitorear eventos	Detectar tickets anómalos
 Deshabilitar delegación	Solo habilitar cuando sea necesario
 Usar AES	En lugar de RC4 para cifrado
+
 🌐 4. ATAQUES EN RUTA (MAN-IN-THE-MIDDLE)
 ¿Qué es?
 Término	Explicación
@@ -197,19 +198,6 @@ MITM	Man-In-The-Middle (ataque en ruta)
 ARP Spoofing	Falsificar MAC para interceptar tráfico
 DAI	Dynamic ARP Inspection (mitigación)
 POODLE	Ataque de degradación SSL/TLS
-🎯 7. REFLEXIÓN FINAL
-
-    FTP sin cifrar es como enviar una carta sin sobre. Usa SFTP o FTPS siempre que sea posible.
-
-    Pass-the-Hash explota la forma en que Windows almacena contraseñas. La mejor defensa es usar Kerberos y restringir cuentas privilegiadas.
-
-    Kerberos es seguro por diseño, pero configuraciones incorrectas (como no rotar KRBTGT) pueden ser explotadas con Golden Tickets.
-
-    Los ataques en ruta ocurren cuando el atacante se interpone entre tú y tu destino. Usa cifrado (HTTPS, SSH) y protege tu red con DAI, DHCP Snooping y Root Guard.
-
-FIN DEL CHEATSHEET
-text
-
 
 ---
 
@@ -223,9 +211,6 @@ text
 | `22-escaneo_nucleo.md` | **Mantener** |
 | **NUEVO** | Crear `22-ataques-autenticacion-kerberos.md` con el contenido de arriba |
 
-**Total final:** ~22 archivos bien organizados y sin redundancias. 🚀
-
-. REFLEXIÓN FINAL
 
     FTP sin cifrar es como enviar una carta sin sobre. Usa SFTP o FTPS siempre que sea posible.
 
