@@ -80,3 +80,12 @@ SELECT * FROM logs ORDER BY fecha DESC;
 
 -- Límite de resultados
 SELECT * FROM logs LIMIT 10;
+
+
+Operadores Lógicos
+Operador	Uso
+AND	Ambas condiciones deben cumplirse.
+OR	Al menos una condición debe cumplirse.
+NOT	Niega la condición.
+LIKE	Búsqueda por patrón (ej: WHERE usuario LIKE 'admin%').
+BETWEEN	Rango de valores (ej: WHERE fecha BETWEEN '2024-01-01' AND '2024-01-31').
