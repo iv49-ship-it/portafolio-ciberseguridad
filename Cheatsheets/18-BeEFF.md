@@ -2,9 +2,9 @@
 
 ## 🛠️ ¿QUÉ ES BEEF?
 
-BeEF (Browser Exploitation Framework) es una herramienta de pruebas de penetración que se enfoca en explotar vulnerabilidades del navegador web [citation:2][citation:4]. A diferencia de otras herramientas que atacan servidores, BeEF ataca el **lado del cliente** (el navegador) [citation:8].
+BeEF (Browser Exploitation Framework) es una herramienta de pruebas de penetración que se enfoca en explotar vulnerabilidades del navegador web. A diferencia de otras herramientas que atacan servidores, BeEF ataca el **lado del cliente** (el navegador).
 
-**Idea principal:** "Enganchar" (hook) uno o más navegadores y usarlos como punto de entrada para lanzar ataques [citation:1][citation:2].
+**Idea principal:** "Enganchar" (hook) uno o más navegadores y usarlos como punto de entrada para lanzar ataques.
 
 ---
 
