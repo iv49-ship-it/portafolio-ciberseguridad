@@ -17,10 +17,10 @@ Profesional en transición a Ciberseguridad, con certificación Linux Essentials
 ## Habilidades
 - Redes: Nmap, Wireshark, TCP/IP, DNS
 - Sistemas: Kali Linux, Windows
-- Cumplimiento: ISO 27001 (en estudio), OWASP Top 10
+- Cumplimiento: ISO 27001 (en estudio)
 - Documentación: Reportes de vulnerabilidades, análisis de riesgos
 - Herramientas: Wappalyzer, curl, whois, dig
-- Python: Básico (scripts de automatización)
+- Python: Básico (scripts básicos de automatización)
 
 ## Contenido del portafolio
 - `cheatsheets/`: Guías rápidas de herramientas y comandos
@@ -29,5 +29,5 @@ Profesional en transición a Ciberseguridad, con certificación Linux Essentials
 - `laboratorios/`: Evidencias de prácticas en Cisco y TryHackMe
 
 ## Contacto
-- LinkedIn: 
+- LinkedIn: https://www.linkedin.com/in/iv%C3%A1n-chac%C3%B3n-47604a223/?isSelfProfile=true
 - Correo: chacon.lh49@gmail.com
