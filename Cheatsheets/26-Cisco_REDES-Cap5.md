@@ -1,9 +1,6 @@
-CHEATSHEET DEL CAPÍTULO 5 (VERSIÓN PORTAFOLIO)
-markdown
+CHEATSHEET DEL CAPÍTULO 5
 
 # CHEATSHEET - CAPÍTULO 5: EXPLOTACIÓN DE VULNERABILIDADES
-
-## 🔴 PRIORIDAD ALTA (Para Bug Bounty y Portafolio)
 
 ### 1. SMB (Server Message Block)
 **Enumeración básica:**
