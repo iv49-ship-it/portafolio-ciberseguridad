@@ -22,7 +22,7 @@
   - ¿Qué IPs están involucradas?
   - ¿Hay cambios sospechosos?
   - ¿Qué indican los flags TCP?
-- **Evidencia:** Cita líneas de logs que muestren timestamps, IPs, flags.
+- **Evidencia:** Citar líneas de logs que muestren timestamps, IPs, flags.
 
 ### SECCIÓN 3: Recomendar una remediación
 - **Objetivo:** Proponer una medida de seguridad para prevenir ataques de fuerza bruta.
@@ -74,7 +74,7 @@ Flag |	Significado
 2. [S.]   ← "Ok, te acepto"
 3. [.]    → "Recibido, ya estamos conectados"
 
-#### Security Incident Report (FORMATO INFORME)
+#### Security Incident Report (FORMATO INFORME - Curso Ciberseguridad Google - Ejemplo de ejercicio)
 
 ## Section 1: Identify the network protocol involved in the incident
 
