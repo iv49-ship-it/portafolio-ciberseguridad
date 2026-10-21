@@ -11,9 +11,9 @@
 
 Los análisis de tráfico DNS y ICMP indican que la organización está experimentando una falla en la resolución de nombres o en la conectividad a un servicio crítico. Durante la revisión de los registros del analizador de protocolos, se observó que:
 
-- [Describe el problema principal encontrado, por ejemplo: "El puerto 443 no responde al intentar acceder al portal web de la empresa."]
-- [Agrega detalles específicos, por ejemplo: "Las solicitudes ICMP devuelven 'Destination Port Unreachable'."]
-- [Menciona el contexto, por ejemplo: "Este puerto es normalmente utilizado para tráfico HTTPS."]
+- [Describir problema principal: "El puerto 443 no responde al intentar acceder al portal web de la empresa."]
+- [Agregar detalles específicos, por ejemplo: "Las solicitudes ICMP devuelven 'Destination Port Unreachable'."]
+- [ Contexto: "Este puerto es normalmente utilizado para tráfico HTTPS."]
 
 **Posibles implicaciones:**
 - [Fallo en el servidor web]
@@ -73,7 +73,7 @@ Según el análisis inicial, el incidente podría deberse a:
 
 ## 👤 ELABORADO POR
 
-- **Nombre del analista:** [Tu nombre completo]
+- **Nombre del analista:** [Nombre completo]
 - **Cargo:** [Analista de Ciberseguridad / Network Security]
 - **Correo:** [tu.correo@empresa.com]
 - **Fecha de emisión:** [DD/MM/AAAA]
