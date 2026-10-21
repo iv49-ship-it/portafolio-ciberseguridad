@@ -70,7 +70,7 @@ ping -c 5 dominio.com        # Solo 5 intentos
 curl -I dominio.com          # Cabeceras HTTP
 curl -I https://dominio.com  # Con HTTPS
 
-[FECHA] - RECONOCIMIENTO PASIVO - DOMINIO
+[FECHA] - RECONOCIMIENTO PASIVO - FORMATO INFORME - DOMINIO
 
 **1. Datos Generales**
 - Dominio: 
@@ -146,7 +146,6 @@ curl -I https://dominio.com  # Con HTTPS
 
 ### 💡 EJEMPLO DE ANÁLISIS
 
-```bash
 curl -I https://paystackmfb.com
 
 
@@ -187,7 +186,7 @@ El sufijo indica el centro de datos que procesó la solicitud.
 
 ## 🧠 REGLA DE ORO
 
-| Si ves... | Significa... |
+| Si veo | Significa |
 |-----------|--------------|
 | `strict-transport-security` | **HSTS activado** ✅ |
 | `-IAD` en `cf-ray` | **Virginia** |
@@ -199,7 +198,6 @@ El sufijo indica el centro de datos que procesó la solicitud.
 
 ## 📝 EJEMPLO COMPLETO
 
-```bash
 curl -I https://paystackmfb.com
 
 # SIGLAS IMPORTANTES PARA BUG BOUNTY (RECONOCIMIENTO)
@@ -326,7 +324,7 @@ curl -I https://paystackmfb.com
 
 ### ¿Qué significa esto en la práctica?
 
-| ✅ SÍ puedes hacer | ❌ NO puedes hacer |
+| ✅ Lo que puedo hacer | ❌ Lo que no puedo hacer |
 |-------------------|-------------------|
 | `whois`, `dig`, `nslookup` | `nmap -p-` (escaneo de puertos) |
 | `ping` (ICMP) | `gobuster`, `dirb` (fuerza bruta) |
@@ -338,20 +336,13 @@ curl -I https://paystackmfb.com
 
 
 
-Término	¿Qué es? | 	Ejemplo en tu caso
+Término	¿Qué es? | Significado (para el ejercicio)
 Common Name (CN)  |	El dominio principal del certificado	public.paystackmfb.com
 Matching Identities	| Todos los dominios/subdominios que comparten el mismo certificado	paystackmfb.com, *.paystackmfb.com
-
-**Si no estás seguro de si una acción es pasiva o activa, pregúntate:**
-> "¿Estoy enviando algo al servidor que el servidor no espera de un usuario normal?"
-
-- **Usuario normal:** hace clic en enlaces, ve páginas, lee contenido.
-- **Atacante:** envía peticiones malformadas, escanea puertos, prueba exploits.
 
 ---
 BUG BOUNTY - RECONOCIMIENTO PASIVO
 1. Buscar subdominios con crt.sh
-bash
 
 # Desde terminal (con User-Agent para evitar bloqueos)
 curl -s -A "Mozilla/5.0" "https://crt.sh/?q=%.paystackmfb.com&output=json" | jq '.[].name_value' | sort -u
@@ -361,7 +352,6 @@ curl -s -A "Mozilla/5.0" "https://crt.sh/?q=%.paystackmfb.com&output=json" > sub
 cat subdominios.txt
 
 2. Verificar si un subdominio existe
-bash
 
 # Ping (si responde, existe)
 ping -c 2 subdominio.paystackmfb.com
@@ -372,10 +362,9 @@ nslookup subdominio.paystackmfb.com
 # Ver cabeceras HTTP
 curl -I https://subdominio.paystackmfb.com
 
-3. Documentar hallazgos en el portafolio
-text
+3. Documentar hallazgos 
 
-[FECHA] - Reconocimiento pasivo - [DOMINIO]
+[FECHA] - Reconocimiento pasivo FORMATO INFORME- [DOMINIO]
 
 **Subdominios encontrados:**
 - okta.paystackmfb.com → Activo
@@ -387,5 +376,3 @@ text
 - Todos los subdominios usan Cloudflare.
 - DNSSEC no configurado.
 - Certificados emitidos por Let's Encrypt.
-
-**Próximo paso:** Analizar cabeceras HTTP y tecnologías.
