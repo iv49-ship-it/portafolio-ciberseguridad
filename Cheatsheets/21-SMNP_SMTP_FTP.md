@@ -229,23 +229,6 @@ VRFY root
 VRFY admin
 550 5.1.1 <admin>: Recipient address rejected   ← No existe
 
-🎯 9. RESPUESTAS PARA EL LABORATORIO (5.1.9)
-Pregunta: "¿Qué comando SMTP le permitirá lograr esta explotación?"
-Opción	Función	¿Es correcta?
-EXPN	Expande lista de correo y muestra miembros	✅ CORRECTA
-VRFY	Verifica si existe un usuario específico	❌ (no muestra miembros de listas)
-RSET	Restablece/cancela una transacción	❌ (no enumera nada)
-RCPT	Indica destinatario	❌ (no enumera listas)
-
-Respuesta correcta: EXPN
-Explicación:
-
-    EXPN (Expand) es el comando que permite mostrar los miembros de una lista de correo
-
-    Un atacante puede usar EXPN para obtener direcciones de correo de todos los miembros de una lista
-
-    Esto permite ataques de phishing dirigidos o enumeración de usuarios
-
 🔍 10. SEARCHSPLOIT - EXPLOITS SMTP
 Comandos:
 bash
@@ -292,6 +275,7 @@ Autenticación	Comunidades (v2c) o usuarios (v3)	Usuarios/contraseñas
 Ataque común	Fuerza bruta de comunidades	Enumeración con VRFY/EXPN
 Herramientas	snmpcheck, scripts Nmap	smtp-user-enum, Nmap
 Script Nmap	snmp-*.nse	smtp-open-relay.nse
+
 📝 13. COMANDOS RÁPIDOS PARA EL LABORATORIO
 bash
 
@@ -325,62 +309,8 @@ EXPN	Comando SMTP para expandir listas de correo
 STARTTLS	Inicia cifrado TLS en SMTP
 MUA	Mail User Agent (cliente)
 MTA	Mail Transfer Agent (servidor)
-🎯 15. REFLEXIÓN FINAL
-
-    SNMP con comunidades débiles (public/private) es un riesgo de seguridad porque permite enumerar información sensible del dispositivo y, en algunos casos, modificar configuraciones.
-
-    SMTP con VRFY/EXPN habilitados permite a los atacantes enumerar usuarios y listas de correo, facilitando ataques de phishing y fuerza bruta.
-
-    Siempre cambiar contraseñas predeterminadas, deshabilitar comandos innecesarios y limitar acceso por firewall.
 
 
-EXPLICACIÓN BREVE DEL CAPÍTULO 5 (PARTE FINAL)
-1. FTP (File Transfer Protocol)
-Concepto	Explicación
-¿Qué es?	Protocolo para transferir archivos entre computadoras
-El problema	NO tiene cifrado → todo viaja en texto plano (incluidas contraseñas)
-Alternativas seguras	FTPS (FTP sobre SSL/TLS) o SFTP (FTP sobre SSH)
-Riesgo común	Login anónimo → cualquiera puede entrar sin contraseña y robar o subir archivos
-Mitigación	Deshabilitar login anónimo, usar FTPS/SFTP, contraseñas seguras
-
-Frase clave: "FTP es como enviar un paquete sin cerrar. Cualquiera puede ver lo que llevas dentro."
-2. Pass-the-Hash (PtH)
-Concepto	Explicación
-¿Qué es?	Un ataque donde el atacante usa el hash de una contraseña (no la contraseña en texto) para autenticarse en otro sistema
-¿Por qué funciona?	Windows no guarda tu contraseña, solo su hash. Si el atacante roba ese hash, puede usarlo como si fuera la contraseña
-¿Dónde se guardan?	En el archivo SAM (Security Account Manager) de Windows
-Herramienta clave	Mimikatz → extrae hashes de la memoria de Windows
-Mitigación	Usar Kerberos en lugar de NTLM, restringir cuentas administrador, proteger equipos con antivirus
-
-Frase clave: "No necesito tu contraseña, solo necesito su huella digital (hash) para hacerme pasar por ti."
-3. Kerberos (Autenticación en Windows)
-Concepto	Explicación
-¿Qué es?	Protocolo de autenticación seguro que usa Windows (y otros sistemas)
-¿Cómo funciona?	Usa un sistema de tickets (como boletos de entrada) en lugar de enviar contraseñas por la red
-Componentes clave	KDC (Centro de Distribución de Claves), TGT (Ticket de concesión de tickets), AS (Servidor de autenticación)
-Ataque Golden Ticket	Si el atacante roba el hash de la cuenta KRBTGT (la "llave maestra" del dominio), puede crear tickets falsos que le dan acceso a TODO el dominio
-Ataque Silver Ticket	Similar al Golden, pero solo para un servicio específico (ej: acceso a archivos en un servidor)
-Kerberoasting	Extraer hashes de cuentas de servicio de Active Directory para descifrarlos offline
-Mitigación	Cambiar contraseña de KRBTGT periódicamente, usar AES en lugar de RC4, monitorear tickets anómalos
-
-Frase clave: "Kerberos es como un sistema de boletos para un concierto. Si robas el sello oficial (KRBTGT), puedes falsificar boletos para cualquier evento."
-4. Ataques en Ruta (Man-in-the-Middle / MITM)
-Concepto	Explicación
-¿Qué es?	El atacante se coloca entre dos dispositivos que se comunican, escucha o modifica la comunicación
-Capa 2 (red local)	ARP Spoofing → el atacante falsifica direcciones MAC para que todo el tráfico pase por él
-Capa 3 (internet)	El atacante manipula rutas para redirigir tráfico
-Aplicación	SSLStrip → degrada HTTPS a HTTP para ver tráfico en texto plano
-Herramientas	arpspoof, BetterCAP, Ettercap, SSLStrip
-Mitigaciones	DAI (evita ARP Spoofing), DHCP Snooping, 802.1X, Root Guard, ACLs, cifrado (HTTPS)
-
-Frase clave: "El atacante se pone en medio de tu conversación y escucha todo lo que dices."
-5. Ataques de Degradación (POODLE)
-Concepto	Explicación
-¿Qué es?	El atacante fuerza al sistema a usar una versión antigua e insegura de SSL/TLS
-Ejemplo	POODLE (2014) → forzaba el uso de SSL 3.0 (vulnerable) para descifrar tráfico
-Mitigación	Deshabilitar SSL 3.0 y TLS 1.0 en servidores, usar TLS 1.2 o superior
-
-Frase clave: "El atacante te engaña para que uses una cerradura vieja y oxidada en lugar de la nueva."
 📊 TABLA RESUMEN
 Tema	Riesgo principal	Mitigación clave
 FTP	Datos en texto plano, login anónimo	Usar SFTP/FTPS, deshabilitar anónimo
@@ -388,10 +318,4 @@ Pass-the-Hash	Robo de hashes NTLM	Usar Kerberos, restringir admins
 Kerberos	Golden/Silver Ticket, Kerberoasting	Rotar KRBTGT, usar AES, monitorear
 MITM (ARP)	Intercepción de tráfico	DAI, DHCP Snooping, 802.1X
 Degradación	Uso de SSL/TLS antiguo	Deshabilitar TLS 1.0/SSL 3.0
-🎯 EN UNA FRASE PARA CADA TEMA
-Tema	Frase
-FTP	"No uses FTP sin cifrar; usa SFTP o FTPS."
-Pass-the-Hash	"No necesito tu contraseña, solo su hash."
-Kerberos	"Si robas KRBTGT, eres el rey del dominio."
-MITM	"El atacante se sienta en medio de tu conversación."
-Degradación	"Te obligan a usar una cerradura vieja."
+
