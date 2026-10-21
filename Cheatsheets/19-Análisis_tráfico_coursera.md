@@ -5,7 +5,7 @@
 ### SECCIÓN 1: Identificar el protocolo de red involucrado
 - **Objetivo:** Identificar qué protocolos de red están presentes en el incidente.
 - **Preguntas guía:** ¿Qué protocolos aparecen en los logs? (DNS, HTTP, TCP, etc.)
-- **Evidencia:** Cita líneas específicas del archivo de logs que muestren el protocolo.
+- **Evidencia:** Citar líneas específicas del archivo de logs que muestren el protocolo.
 
 | Protocolo | Cómo identificarlo |
 |-----------|-------------------|
@@ -33,7 +33,7 @@
 
 | Medida | Explicación |
 |--------|-------------|
-| Account Lockout | Bloquear cuenta tras N intentos fallidos |
+| Account Lockout | Bloquear cuenta tras intentos fallidos |
 | MFA (Autenticación multifactor) | Añadir segunda capa de autenticación |
 | Rate Limiting | Limitar intentos por IP |
 | CAPTCHA | Prevenir ataques automatizados |
@@ -45,7 +45,7 @@
 ## 🔍 CÓMO LEER UN LOG DE TCPDUMP
 
 ### Estructura de una línea de log:
-```text
+
 Timestamp Protocol Source > Destination: Flags [X], seq N, win N, length N
 
 #EJEMPLO: 
