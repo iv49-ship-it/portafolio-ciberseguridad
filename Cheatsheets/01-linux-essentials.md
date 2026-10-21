@@ -36,7 +36,7 @@ gzip -9 archivo        # Máxima compresión (más lento)
 gzip -1 archivo        # Mínima compresión (más rápido)
 
 
-🔐 Permisos (chmod)
+#🔐 Permisos (chmod)
 Permiso	Número	Significado
 r (read)	4	Leer archivo
 w (write)	2	Modificar archivo
@@ -52,14 +52,14 @@ cp -a archivo destino   # Preserva TODO (permisos, timestamps)
 cp -p archivo destino   # Preserva permisos y timestamps
 
 
-📊 Monitoreo del sistema
+#📊 Monitoreo del sistema
 free        # Memoria RAM y swap
 df          # Espacio en disco
 df /home    # Espacio del filesystem completo
 du -sh /home/*  # Espacio por usuario
 
 
-📂 Sistema de archivos /proc
+#📂 Sistema de archivos /proc
 Archivo	Información
 /proc/cpuinfo	Detalles del CPU
 /proc/meminfo	Estado RAM y swap
@@ -73,7 +73,7 @@ Archivo	Información
 /proc/[PID]/	Info de proceso específico
 
 
-📝 Logs y configuración
+#📝 Logs y configuración
 /var/log/auth.log    # Logs de autenticación
 ~/.bashrc            # Configuración de bash (se carga al iniciar)
 
@@ -88,7 +88,7 @@ AAAA  # IPv6
 shutdown -h now       # Apaga inmediatamente
 
 
-🔍 Filtros y comandos útiles
+#🔍 Filtros y comandos útiles
 sort              # Ordena (alfabético/numérico)
 wc -l             # Cuenta líneas
 wc -w             # Cuenta palabras
