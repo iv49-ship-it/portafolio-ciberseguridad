@@ -43,7 +43,7 @@ python3 server.py
 """
 """
 ========================================
-***** 2.0 CAPTURAR DATOS CON WIRESHARK (mínimo)****
+***** 2.0 CAPTURAR DATOS CON WIRESHARK ****
 ========================================
 """
 
