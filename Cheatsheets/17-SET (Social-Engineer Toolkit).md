@@ -124,6 +124,5 @@ ls /root/.set/reports/payloads/
 
 ## ⚠️ NOTAS IMPORTANTES
 
-- **No uses SET en entornos reales** sin autorización por escrito.
+- **No usar SET en entornos reales** sin autorización por escrito.
 - **En TryHackMe** solo explorar el menú, no enviar correos reales.
-- **El valor está en entender el flujo**, no en ejecutarlo.
