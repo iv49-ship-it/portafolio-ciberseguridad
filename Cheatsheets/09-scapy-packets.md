@@ -1,9 +1,3 @@
-"""
-========================================
-CHEATSHEET - SCAPY PARA LABORATORIO
-Parte 3: Crear y enviar paquete ICMP
-========================================
-"""
 
 # ========================================
 # 1. COMANDOS BÁSICOS DE SCAPY
@@ -130,7 +124,7 @@ Parte 3: Crear y enviar paquete ICMP
 
 
 # ========================================
-# 8. PREGUNTAS TÍPICAS DEL LABORATORIO
+# 8. PREGUNTAS LABORATORIO CISCO
 # ========================================
 
 # ¿Qué tráfico se muestra en nsummary()?
@@ -138,18 +132,15 @@ Parte 3: Crear y enviar paquete ICMP
 # respuestas de eco (echo-reply) alternadas
 
 # ¿Qué diferencia hay entre un paquete normal y uno personalizado?
-# Respuesta: El campo "load" o "Raw" cambia al mensaje que escribimos
+# Respuesta: El campo "load" o "Raw" cambia al mensaje
 
 # ¿Para qué sirve el flag SA (SYN-ACK)?
 # Respuesta: Indica que el puerto está abierto en el destino
 
 
 # ========================================
-# 9. EJEMPLO COMPLETO PARA TU LABORATORIO
+# 9. EJEMPLO COMPLETO PARA LABORATORIO
 # ========================================
-
-"""
-PASOS PARA LA PARTE 3 (red virtual de Cisco):
 
 Terminal 1 (Scapy):
 >>> sniff(iface="br-internal", filter="icmp", count=10)
@@ -171,7 +162,7 @@ Terminal 1 (Scapy - la que captura):
 """
 
 # ========================================
-# 10. MI COMANDO QUE YA FUNCIONÓ (tu red real)
+# 10. MI COMANDO QUE YA FUNCIONÓ (mi red real)
 # ========================================
 
 """
@@ -199,13 +190,13 @@ Laboratorio: Escaneo de puerto 445
 # 1. CAPTURAR TRÁFICO EN LA INTERFAZ CORRECTA
 # ========================================
 
-# Primero, identifica tu interfaz (si estás en red 10.6.6.0/24)
+# Primero, identificae interfaz (si estoy en red 10.6.6.0/24)
 # >>> conf.ifaces
 
 # Capturar tráfico TCP en la interfaz virtual (laboratorio Cisco)
 # >>> sniff(iface="br-internal", filter="tcp", count=10)
 
-# Si usas tu red real (como práctica)
+# Si uso mi red real (como práctica)
 # >>> sniff(iface="eth0", filter="tcp and host 8.8.8.8", count=10)
 
 
@@ -251,7 +242,7 @@ FLAGS MÁS IMPORTANTES:
 
 | Flag | Valor | Significado | ¿Qué indica? |
 |------|-------|-------------|---------------|
-| S    | 0x02  | SYN         | Solicitud de conexión (tú envías) |
+| S    | 0x02  | SYN         | Solicitud de conexión (yo envío) |
 | SA   | 0x12  | SYN-ACK     | Puerto ABIERTO (destino responde) |
 | R    | 0x04  | RST         | Puerto CERRADO o rechazado |
 | A    | 0x10  | ACK         | Confirmación de recepción |
@@ -261,14 +252,14 @@ FLAGS MÁS IMPORTANTES:
 
 
 # ========================================
-# 5. LO QUE DEBES VER (si el puerto está ABIERTO)
+# 5. SI EL PUERTO ESTÁ ABIERTO
 # ========================================
 
 """
-En la captura del laboratorio (10.6.6.23:445):
+En la captura del laboratorio Cisco (10.6.6.23:445):
 
 0000 Ether / IP / TCP 10.6.6.1:xxxxx > 10.6.6.23:445 S
-0001 Ether / IP / TCP 10.6.6.23:445 > 10.6.6.1:xxxxx SA   ← ESTO ES LO QUE BUSCAS
+0001 Ether / IP / TCP 10.6.6.23:445 > 10.6.6.1:xxxxx SA   ← objetivo de búsqueda
 0002 Ether / IP / TCP 10.6.6.1:xxxxx > 10.6.6.23:445 A
 
 El paquete con SA (SYN-ACK) indica que el puerto 445 está ABIERTO.
@@ -276,7 +267,7 @@ El paquete con SA (SYN-ACK) indica que el puerto 445 está ABIERTO.
 
 
 # ========================================
-# 6. LO QUE DEBES VER (si el puerto está CERRADO)
+# 6. SI EL PUERTO ESTÁ CERRADO
 # ========================================
 
 """
@@ -302,7 +293,7 @@ El paquete con RA indica que el puerto está CERRADO.
 
 
 # ========================================
-# 8. PREGUNTA DEL LABORATORIO (respuesta)
+# 8. PREGUNTAS Y RESPUESTAS DEL LABORATORIO CISCO
 # ========================================
 
 """
@@ -318,7 +309,7 @@ cerrado, el destino habría respondido con un paquete RA (RST-ACK).
 
 
 # ========================================
-# 9. EJEMPLO COMPLETO (con tu red real)
+# 9. EJEMPLO COMPLETO CON MI RED LOCAL
 # ========================================
 
 """
@@ -346,7 +337,7 @@ TERMINAL 1 (ver resultados):
 |-------|-------|----------|
 | No se ve el paquete SA | Puerto cerrado o firewall | Probar con otro puerto (80, 443) |
 | No se capturan paquetes | Interfaz incorrecta | Verificar con conf.ifaces |
-| SyntaxError | Usaste : en lugar de = | filter="icmp" (con =) |
+| SyntaxError | Usar : en lugar de = | filter="icmp" (con =) |
 | No hay respuesta | Destino no alcanzable | Verificar conectividad con ping |
 """
 
@@ -364,7 +355,7 @@ TERMINAL 1 (ver resultados):
 
 ---
 
-## 🚩 FLAGS TCP (los importantes)
+## 🚩 FLAGS TCP (importantes)
 
 | Flag | Nombre | Qué significa |
 |------|--------|---------------|
@@ -391,9 +382,7 @@ TERMINAL 1 (ver resultados):
 
 ---
 
-## 📦 CREACIÓN DE PAQUETES (ejemplos)
-
-```python
+## 📦 CREACIÓN DE PAQUETES (ejemplos para practicar)
 # Ping normal
 IP(dst="8.8.8.8")/ICMP()
 
@@ -403,8 +392,8 @@ IP(dst="8.8.8.8")/ICMP()/"Hola"
 # TCP SYN a puerto 80
 IP(dst="8.8.8.8")/TCP(dport=80, flags="S")
 
-💡 REGLA DE ORO
-Siempre busca echo-reply o SA. Si están, funcionó
-💡 CIERRE
-El Padding son datos de relleno (no tu mensaje).
-El Raw es tu mensaje personalizado.
+
+#Siempre buscar echo-reply o SA. (señal de que funciona)
+
+#El Padding son datos de relleno.
+#El Raw es tu mensaje personalizado.
