@@ -8,13 +8,6 @@ BeEF (Browser Exploitation Framework) es una herramienta de pruebas de penetraci
 
 ---
 
-## ⚠️ ADVERTENCIA LEGAL
-
-> **BeEF solo debe usarse en entornos autorizados.**  
-> No lo uses contra sistemas sin permiso explícito por escrito [citation:2][citation:8].
-
----
-
 ## 📋 INSTALACIÓN Y EJECUCIÓN
 
 ### En Kali Linux (viene preinstalado)
