@@ -146,7 +146,7 @@ VER DETALLES:
 
 
 # ========================================
-# 6. LO QUE DEBES VER (si funciona)
+# 6. SI FUNCIONA LO QUE DEBO VER
 # ========================================
 
 """
@@ -170,20 +170,20 @@ No.  Time   Source    Destination   Protocol Info
 
 """
 PROBLEMA: El servidor no muestra "DATOS:"
-SOLUCIÓN: Verifica que el formulario POST apunte a "http://localhost:8080/enviar"
+SOLUCIÓN: VerificaR que el formulario POST apunte a "http://localhost:8080/enviar"
 
 PROBLEMA: Wireshark no captura nada
-SOLUCIÓN: Asegura que el tiburón esté AZUL (capturando)
+SOLUCIÓN: AseguraR que el tiburón esté AZUL (capturando)
 
 PROBLEMA: No encuentro POST
-SOLUCIÓN: Busca "username" o "admin" en lugar de POST
+SOLUCIÓN: BuscaR "username" o "admin" en lugar de POST
 
 PROBLEMA: El archivo HTML no se abre
 SOLUCIÓN: Usa la ruta completa: file:///home/kali/login.html
          Para saber la ruta: pwd y ls login.html
 
 PROBLEMA: La interfaz "lo" no aparece
-SOLUCIÓN: En Wireshark, ve a Capture → Options → selecciona "Loopback"
+SOLUCIÓN: En Wireshark, ir a Capture → Options → seleccionar "Loopback"
 """
 
 
@@ -222,7 +222,7 @@ EOF
 
 
 # ========================================
-# 10. LO QUE APRENDISTE
+# 10. SÍNTESIS
 # ========================================
 
 """
@@ -232,10 +232,10 @@ EOF
 ✅ El método POST envía datos en el cuerpo del paquete
 ✅ HTML Form URL Encoded muestra usuario y contraseña
 
-APLÍCALO A BUG BOUNTY:
-- Busca sitios que usen HTTP (no HTTPS)
-- Configura Burp Suite o Wireshark para interceptar
-- Reporta "Credenciales enviadas en texto plano" como vulnerabilidad
+APLÍCAR A BUG BOUNTY:
+- Sitios que usen HTTP (no HTTPS)
+- Configurar Burp Suite o Wireshark para interceptar
+- Reportar "Credenciales enviadas en texto plano" como vulnerabilidad
 """
 
 #ESCANEO PASIVO
